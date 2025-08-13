@@ -4,24 +4,26 @@ import { TokenAmount } from "../TokenAmount";
 
 interface CompareItemProps {
     label: string
-    quote: bigint | string
-    order: bigint | string
+    tooltipQuote?: string
+    tooltipOrder?: string
+    quote: bigint | string | null
+    order: bigint | string | null
     token: TokenInfo
 }
 
-export function CompareItem({label, quote, order, token}: CompareItemProps) {
-    const quoteValue = BigInt(quote)
-    const orderValue = BigInt(order)
+export function CompareItem({label, quote, order, token, tooltipQuote, tooltipOrder }: CompareItemProps) {
+    const quoteValue = quote !== null && BigInt(quote)
+    const orderValue = order !== null &&BigInt(order)
 
     return (
         <div className="compare-item">
             <div>
-                <span>{label}:</span>
-                <TokenAmount value={quoteValue} opposite={orderValue} token={token}/>
+                <span title={tooltipQuote}>{label}:</span>
+                {quoteValue === false ? '' : <TokenAmount value={quoteValue} opposite={orderValue} token={token}/>}
             </div>
             <div>
-                <span>{label}:</span>
-                <TokenAmount value={orderValue} opposite={quoteValue} token={token}/>
+                <span title={tooltipOrder}>{label}:</span>
+                {orderValue === false ? '' : <TokenAmount value={orderValue} opposite={quoteValue} token={token}/>}
             </div>
         </div>
     )
