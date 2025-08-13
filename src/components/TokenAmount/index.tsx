@@ -9,12 +9,6 @@ interface TokenAmountProps {
 }
 
 function getAmountView(value: bigint, token: TokenInfo): string {
-    const decimalsScale = BigInt(10 ** token.decimals)
-
-    if (value > decimalsScale) {
-        return (value / decimalsScale).toString(token.decimals)
-    }
-
     // TODO: it's not precise
     return (+String(value) / (10 ** token.decimals)).toFixed(token.decimals)
 }
