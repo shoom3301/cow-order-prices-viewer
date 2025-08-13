@@ -10,15 +10,18 @@ interface CompareItemProps {
 }
 
 export function CompareItem({label, quote, order, token}: CompareItemProps) {
+    const quoteValue = BigInt(quote)
+    const orderValue = BigInt(order)
+
     return (
         <div className="compare-item">
             <div>
                 <span>{label}:</span>
-                <TokenAmount value={BigInt(quote)} token={token}/>
+                <TokenAmount value={quoteValue} opposite={orderValue} token={token}/>
             </div>
             <div>
                 <span>{label}:</span>
-                <TokenAmount value={BigInt(order)} token={token}/>
+                <TokenAmount value={orderValue} opposite={quoteValue} token={token}/>
             </div>
         </div>
     )
