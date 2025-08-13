@@ -1,0 +1,40 @@
+import "./index.css";
+import { useOrderContextStore } from "../../state/orderContext.ts";
+import { CompareItem } from "../CompareItem";
+import { useErc20Token } from "../../hooks/useErc20Token.ts";
+
+export function OrderView() {
+    const { chainId, order } = useOrderContextStore()
+
+    const sellToken = useErc20Token(chainId, order?.sellToken ?? null)
+    const buyToken = useErc20Token(chainId, order?.buyToken ?? null)
+
+    if (!order) {
+        return (
+            <div>
+                <p>1. Select chain</p>
+                <p>2. Specify order Id</p>
+            </div>
+        )
+    }
+
+    if (!sellToken || !buyToken) {
+        return (
+            <div>Loading...</div>
+        )
+    }
+
+    return (
+        <div className="order-view-table">
+            <div>
+                <div>
+                    <h3>Quote</h3>
+                </div>
+                <div>
+                    <h3>Order</h3>
+                </div>
+            </div>
+            <CompareItem label="Sell amount" quote={order.quote.sellAmount} order={order.sellAmount} token={sellToken}/>
+        </div>
+    )
+}

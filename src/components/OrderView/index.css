@@ -1,0 +1,13 @@
+.order-view-table {
+    margin: 20px 0;
+}
+
+.order-view-table > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.order-view-table > div > div {
+    border: 1px solid #979fa5;
+    padding: 5px;
+}

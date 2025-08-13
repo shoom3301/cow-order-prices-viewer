@@ -1,10 +1,14 @@
-import { useState } from 'react'
 import './App.css'
+import { Header } from "./components/Header";
+import { OrderIdInput } from "./components/OrderIdInput";
+import { OrderView } from "./components/OrderView";
 
 export function App() {
-    const [count] = useState(0)
-
     return (
-        <div>Start here {count}</div>
+        <div className="app-container">
+            <Header/>
+            <OrderIdInput/>
+            <OrderView/>
+        </div>
     )
 }
