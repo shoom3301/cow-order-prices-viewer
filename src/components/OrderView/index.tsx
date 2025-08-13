@@ -35,6 +35,7 @@ export function OrderView() {
                 </div>
             </div>
             <CompareItem label="Sell amount" quote={order.quote.sellAmount} order={order.sellAmount} token={sellToken}/>
+            <CompareItem label="Buy amount" quote={order.quote.buyAmount} order={order.buyAmount} token={buyToken}/>
         </div>
     )
 }

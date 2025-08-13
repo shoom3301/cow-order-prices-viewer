@@ -6,7 +6,7 @@ interface TokenAmountProps {
 }
 
 export function TokenAmount({value, token}: TokenAmountProps) {
-    const viewAmount = value / BigInt(10 ** token.decimals)
+    const viewAmount = +String(value) / (10 ** token.decimals)
 
-    return `${viewAmount.toString()} ${token.symbol}`
+    return `${viewAmount.toFixed(token.decimals)} ${token.symbol}`
 }
