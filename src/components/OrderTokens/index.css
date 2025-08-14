@@ -1,0 +1,25 @@
+.tokens {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 18px;
+}
+
+.token-item {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin: 10px;
+    max-width: 50%;
+    overflow: auto;
+}
+
+.token-item label {
+    font-weight: 600;
+}
+
+.token-item pre {
+    font-size: 12px;
+}

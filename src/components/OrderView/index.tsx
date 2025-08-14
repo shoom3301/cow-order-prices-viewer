@@ -7,6 +7,7 @@ import { getQuoteAmounts } from "../../logic/getQuoteAmounts.ts";
 import { getOrderBuyAmountAfterFees } from "../../logic/getOrderBuyAmountAfterFees.ts";
 import { OrderParams } from "../OrderParams";
 import { QuoteBreakdown } from "../QuoteBreakdown";
+import { OrderTokens } from "../OrderTokens";
 
 export function OrderView() {
     const {chainId, order} = useOrderContextStore()
@@ -40,7 +41,8 @@ export function OrderView() {
 
     return (
         <div>
-            <OrderParams order={order} sellToken={sellToken} buyToken={buyToken}/>
+            <OrderParams order={order}/>
+            <OrderTokens sellToken={sellToken} buyToken={buyToken}/>
             {!isOrderSlippageValid && (
                 <div className="invalid-slippage-banner">
                     Order slippage is invalid!

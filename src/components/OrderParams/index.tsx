@@ -1,12 +1,9 @@
 import "./index.css";
 import type { FullOrder } from "../../types.ts";
-import type { TokenInfo } from "@cowprotocol/cow-sdk";
 import { getAppDataParams } from "../../logic/getAppDataParams.ts";
 
 interface OrderParamsProps {
     order: FullOrder
-    sellToken: TokenInfo
-    buyToken: TokenInfo
 }
 
 export function OrderParams({order}: OrderParamsProps) {
