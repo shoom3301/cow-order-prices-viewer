@@ -8,6 +8,7 @@ import { getOrderBuyAmountAfterFees } from "../../logic/getOrderBuyAmountAfterFe
 import { OrderParams } from "../OrderParams";
 import { QuoteBreakdown } from "../QuoteBreakdown";
 import { OrderTokens } from "../OrderTokens";
+import { SlippageComparison } from "../SlippageComparison";
 
 export function OrderView() {
     const {chainId, order} = useOrderContextStore()
@@ -49,6 +50,7 @@ export function OrderView() {
                     Order "Min. receive amount" should not be greater than quote "Min. receive amount"!
                 </div>
             )}
+            <SlippageComparison order={order} sellToken={sellToken} buyToken={buyToken}/>
             <div className="container">
                 <div>
                     <QuoteBreakdown quoteAmounts={quoteAmounts}/>

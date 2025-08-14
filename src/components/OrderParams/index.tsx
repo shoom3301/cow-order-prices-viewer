@@ -15,10 +15,10 @@ export function OrderParams({order}: OrderParamsProps) {
                 <label>Status: </label><strong>{order.status}</strong>
             </div>
             <div className="param-item">
-                <label>Partner fee: </label><strong>{partnerFeeBps / 100}%</strong>
+                <label>Partner fee (app-data): </label><strong>{partnerFeeBps / 100}%</strong>
             </div>
             <div className="param-item">
-                <label>Slippage: </label><strong>{slippagePercentBps / 100}%</strong>
+                <label>Slippage (app-data): </label><strong>{slippagePercentBps / 100}%</strong>
             </div>
         </div>
     )
