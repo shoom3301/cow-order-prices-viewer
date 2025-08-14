@@ -1,5 +1,5 @@
 .quote-breakdown {
-    background: #ededed;
+    background: rgba(220, 220, 220, 0.15);
     padding: 14px;
     max-width: 400px;
     overflow-x: scroll;
