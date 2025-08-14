@@ -7,6 +7,7 @@ function getOrderIdFromUrl(): string {
 
     return search.get('orderId') || ''
 }
+
 export function OrderIdInput() {
     const initial = getOrderIdFromUrl()
     const [orderId, setOrderId] = useState(initial)

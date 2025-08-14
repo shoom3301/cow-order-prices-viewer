@@ -1,3 +1,11 @@
 .amount-diff-highlight {
     background: rgba(255, 0, 0, 0.28);
 }
+
+.amount-diff-highlight_yellow {
+    background: rgba(255, 166, 0, 0.28);
+}
+
+.amount-diff-highlight_green {
+    background: rgba(123, 255, 0, 0.28);
+}

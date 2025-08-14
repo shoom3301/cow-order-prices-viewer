@@ -2,6 +2,9 @@ import "./index.css";
 import { useOrderContextStore } from "../../state/orderContext.ts";
 import { CompareItem } from "../CompareItem";
 import { useErc20Token } from "../../hooks/useErc20Token.ts";
+import { getFeeFromQuote } from "../../logic/getFeeFromQuote.ts";
+import { getQuoteAmounts } from "../../logic/getQuoteAmounts.ts";
+import { getOrderBuyAmountAfterFees } from "../../logic/getOrderBuyAmountAfterFees.ts";
 
 export function OrderView() {
     const {chainId, order} = useOrderContextStore()
@@ -24,7 +27,9 @@ export function OrderView() {
         )
     }
 
-    const quoteFee = (+order.quote.gasAmount * +order.quote.gasPrice / +order.quote.sellTokenPrice).toFixed(0)
+    const quoteFeeInSellToken = getFeeFromQuote(order.quote)
+    const quoteAmounts = getQuoteAmounts(order, sellToken, buyToken)
+    const orderBuyAfterFees = getOrderBuyAmountAfterFees(order)
 
     return (
         <div className="order-view-table">
@@ -36,12 +41,34 @@ export function OrderView() {
                     <h3>Order</h3>
                 </div>
             </div>
-            <CompareItem label="Sell amount" quote={order.quote.sellAmount} order={order.sellAmount} token={sellToken}/>
-            <CompareItem label="Buy amount" quote={order.quote.buyAmount} order={order.buyAmount} token={buyToken}/>
-            <CompareItem label="Fee amount"
+            <CompareItem label="Sell amount"
+                         quote={order.quote.sellAmount}
+                         order={order.sellAmount}
+                         token={sellToken}/>
+
+            <CompareItem label="After fees amount"
+                         quote={quoteAmounts.afterPartnerFees.buyAmount}
+                         order={orderBuyAfterFees}
+                         token={buyToken}/>
+
+            <CompareItem label="Min. receive amount"
+                         quote={quoteAmounts.afterSlippage.buyAmount}
+                         order={order.buyAmount}
+                         token={buyToken}/>
+
+            <CompareItem label="Expected fee amount"
+                         orderLabel="Executed fee amount"
                          tooltipQuote="gasAmount * gasPrice / sellTokenPrice"
-                         quote={quoteFee}
-                         order={order.executedFee || null} token={sellToken}/>
+                         quote={quoteFeeInSellToken}
+                         order={order.executedFee || null}
+                         token={sellToken}/>
+
+            <CompareItem label="Expected buy amount"
+                         orderLabel="Executed buy amount"
+                         quote={order.quote.buyAmount}
+                         order={order.executedBuyAmount}
+                         token={sellToken}/>
+
         </div>
     )
 }

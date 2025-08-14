@@ -2,6 +2,8 @@ import "./index.css";
 import type { TokenInfo } from "@cowprotocol/cow-sdk";
 import { firstDiffIndex } from "../../utils/firstDiffIndex.ts";
 
+const ACCURACY_THRESHOLD = 99.99
+
 interface TokenAmountProps {
     value: bigint
     opposite: bigint | false
@@ -17,14 +19,25 @@ export function TokenAmount({value, opposite, token}: TokenAmountProps) {
     const viewAmount = getAmountView(value, token)
     const oppositeAmount = opposite !== false && getAmountView(opposite, token)
 
+    const bigger = Math.max(+viewAmount, +oppositeAmount)
+    const smaller = Math.min(+viewAmount, +oppositeAmount)
+    const diffPercent = oppositeAmount ? Math.abs(smaller * 100 / bigger) : null
+
+    const isAccurate = diffPercent !== null && diffPercent > ACCURACY_THRESHOLD && diffPercent <= 100
+
     const diffIndex = oppositeAmount === false ? -1 : firstDiffIndex(viewAmount, oppositeAmount)
 
     const view = diffIndex === -1
-        ? viewAmount
-        : <>
-            <span>{viewAmount.slice(0, diffIndex)}</span>
-            <span className="amount-diff-highlight">{viewAmount.slice(diffIndex, viewAmount.length)}</span>
-        </>
+        ? <span className="amount-diff-highlight_green">{viewAmount}</span>
+        : (
+            <>
+                <span>{viewAmount.slice(0, diffIndex)}</span>
+                <span title={diffPercent === null ? '' : `Diff: ${diffPercent.toFixed(4)}$`}
+                      className={`${isAccurate ? 'amount-diff-highlight_yellow' : 'amount-diff-highlight'}`}>
+                    {viewAmount.slice(diffIndex, viewAmount.length)}
+                </span>
+            </>
+        )
 
     return <>{view} {token.symbol}</>
 }
