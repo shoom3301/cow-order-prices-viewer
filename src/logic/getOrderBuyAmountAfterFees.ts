@@ -6,6 +6,6 @@ export function getOrderBuyAmountAfterFees(order: FullOrder): bigint {
     const appData = JSON.parse(order.fullAppData || '{}')
     const slippagePercentBps: number = appData.metadata.quote.slippageBips ?? 0
 
-    return BigInt(+order.buyAmount * (1 + (slippagePercentBps / ONE_HUNDRED_BPS)))
+    return BigInt(Math.ceil(+order.buyAmount * (1 + (slippagePercentBps / ONE_HUNDRED_BPS))))
 
 }
