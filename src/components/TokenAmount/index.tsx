@@ -1,6 +1,7 @@
 import "./index.css";
 import type { TokenInfo } from "@cowprotocol/cow-sdk";
 import { firstDiffIndex } from "../../utils/firstDiffIndex.ts";
+import { getAmountsDiffPercent } from "../../utils/getAmountsDiffPercent.ts";
 
 const ACCURACY_THRESHOLD = 99.99
 
@@ -19,9 +20,7 @@ export function TokenAmount({value, opposite, token}: TokenAmountProps) {
     const viewAmount = getAmountView(value, token)
     const oppositeAmount = opposite !== false && getAmountView(opposite, token)
 
-    const bigger = Math.max(+viewAmount, +oppositeAmount)
-    const smaller = Math.min(+viewAmount, +oppositeAmount)
-    const diffPercent = oppositeAmount ? Math.abs(smaller * 100 / bigger) : null
+    const diffPercent = getAmountsDiffPercent(+viewAmount, oppositeAmount === false ? null : +oppositeAmount)
 
     const isAccurate = diffPercent !== null && diffPercent > ACCURACY_THRESHOLD && diffPercent <= 100
 

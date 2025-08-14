@@ -32,9 +32,20 @@ export function OrderView() {
     const quoteAmounts = getQuoteAmounts(order, sellToken, buyToken)
     const orderBuyAfterFees = getOrderBuyAmountAfterFees(order)
 
+    const quoteAfterSlippage = quoteAmounts.afterSlippage.buyAmount
+    const orderAfterSlippage = BigInt(order.buyAmount)
+
+    const isOrderSlippageValid = orderAfterSlippage <= quoteAfterSlippage
+
     return (
         <div>
             <OrderParams order={order} sellToken={sellToken} buyToken={buyToken}/>
+            {!isOrderSlippageValid && (
+                <div className="invalid-slippage-banner">
+                    Order slippage is invalid!
+                    Order "Min. receive amount" should not be greater than quote "Min. receive amount"!
+                </div>
+            )}
             <div className="order-view-table">
                 <div>
                     <div>
