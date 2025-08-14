@@ -1,0 +1,12 @@
+.params {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.param-item {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin: 10px;
+}
