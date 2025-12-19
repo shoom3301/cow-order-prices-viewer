@@ -10,6 +10,7 @@ import { QuoteBreakdown } from "../QuoteBreakdown";
 import { OrderTokens } from "../OrderTokens";
 import { SlippageComparison } from "../SlippageComparison";
 import { RawOrderBreakdown } from "../RawOrderBreakdown";
+import { AmountsExplanation } from "../AmountsExplanation";
 
 export function OrderView() {
     const {chainId, order} = useOrderContextStore()
@@ -33,7 +34,8 @@ export function OrderView() {
     }
 
     const quoteFeeInSellToken = getFeeFromQuote(order.quote)
-    const quoteAmounts = getQuoteAmounts(order, sellToken, buyToken)
+    const quoteAmountsData = getQuoteAmounts(order, sellToken, buyToken)
+    const {result: quoteAmounts} = quoteAmountsData
     const orderBuyAfterFees = getOrderBuyAmountAfterFees(order)
 
     const quoteAfterSlippage = quoteAmounts.afterSlippage.buyAmount
@@ -102,6 +104,9 @@ export function OrderView() {
                 </div>
                 <div>
                     <QuoteBreakdown quoteAmounts={quoteAmounts}/>
+                </div>
+                <div>
+                    <AmountsExplanation amountsAndCosts={quoteAmountsData.result} params={quoteAmountsData.params}/>
                 </div>
             </div>
         </div>

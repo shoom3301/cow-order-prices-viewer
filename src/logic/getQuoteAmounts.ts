@@ -1,11 +1,15 @@
 import { getFeeFromQuote } from "./getFeeFromQuote.ts";
-import { getQuoteAmountsAndCosts, type TokenInfo, type QuoteAmountsAndCosts } from "@cowprotocol/cow-sdk";
+import { getQuoteAmountsAndCosts, type QuoteAmountsAndCosts, type TokenInfo } from "@cowprotocol/cow-sdk";
 import type { FullOrder } from "../types.ts";
 import { getAppDataParams } from "./getAppDataParams.ts";
+import type { QuoteAmountsAndCostsParams } from "@cowprotocol/sdk-order-book";
 
 const protocolFeeBps = 2
 
-export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken: TokenInfo): QuoteAmountsAndCosts {
+export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken: TokenInfo): {
+    result: QuoteAmountsAndCosts,
+    params: QuoteAmountsAndCostsParams
+} {
     const {partnerFeeBps, slippagePercentBps} = getAppDataParams(order)
 
     const quoteFeeInSellToken = getFeeFromQuote(order.quote)
@@ -16,6 +20,20 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
 
     const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
     const buyAmount = quoteBuyAmount
+
+    const params: QuoteAmountsAndCostsParams = {
+        protocolFeeBps,
+        orderParams: {
+            ...order,
+            sellAmount: sellAmount.toString(),
+            buyAmount: buyAmount.toString(),
+            feeAmount: quoteFeeInSellToken.toString()
+        },
+        sellDecimals: sellToken.decimals,
+        buyDecimals: buyToken.decimals,
+        slippagePercentBps,
+        partnerFeeBps
+    }
 
     const result = getQuoteAmountsAndCosts({
         protocolFeeBps,
@@ -47,5 +65,5 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
         getQuoteAmountsAndCosts
     })
 
-    return result
+    return {params, result}
 }

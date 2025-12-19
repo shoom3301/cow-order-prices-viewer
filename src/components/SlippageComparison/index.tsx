@@ -18,7 +18,7 @@ interface SlippageComparisonProps {
 export function SlippageComparison({order, sellToken, buyToken}: SlippageComparisonProps) {
     const {slippagePercentBps} = getAppDataParams(order)
     const orderBuyAfterFees = getOrderBuyAmountAfterFees(order)
-    const quoteAmounts = getQuoteAmounts(order, sellToken, buyToken)
+    const {result: quoteAmounts} = getQuoteAmounts(order, sellToken, buyToken)
 
     const isSellOrder = order.kind == OrderKind.SELL
 
