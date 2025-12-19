@@ -52,12 +52,6 @@ export function quoteAmountsAndCostsBreakdown(
   add(`protocolFeeBps: ${protocolFeeBps}`)
   add('')
 
-  // Constants
-  add('CONSTANTS:')
-  add('-'.repeat(80))
-  add(`ONE_HUNDRED_BPS = ${ONE_HUNDRED_BPS}`)
-  add('')
-
   // Step 1: Calculate protocol fee
   add('STEP 1: CALCULATE PROTOCOL FEE')
   add('-'.repeat(80))
