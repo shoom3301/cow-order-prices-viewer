@@ -11,11 +11,11 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
     const quoteFeeInSellToken = getFeeFromQuote(order.quote)
     const quoteBuyAmount = BigInt(order.quote.buyAmount)
     const quoteSellAmount = BigInt(order.quote.sellAmount)
-    const limitPrice= Number(quoteBuyAmount) / Number(quoteSellAmount)
-    const quoteFeeInBuyToken = BigInt(Math.ceil(Number(quoteFeeInSellToken) * limitPrice))
+    // const limitPrice= Number(quoteBuyAmount) / Number(quoteSellAmount)
+    // const quoteFeeInBuyToken = BigInt(Math.ceil(Number(quoteFeeInSellToken) * limitPrice))
 
     const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
-    const buyAmount = (quoteBuyAmount - quoteFeeInBuyToken)
+    const buyAmount = quoteBuyAmount
 
     const result = getQuoteAmountsAndCosts({
         protocolFeeBps,
