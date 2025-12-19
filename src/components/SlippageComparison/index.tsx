@@ -19,19 +19,20 @@ export function SlippageComparison({order, sellToken, buyToken}: SlippageCompari
     const orderBuyAfterFees = getOrderBuyAmountAfterFees(order)
     const quoteAmounts = getQuoteAmounts(order, sellToken, buyToken)
 
-    const orderAfterSlippage = BigInt(order.buyAmount)
+    const orderBuyAfterSlippage = BigInt(order.buyAmount)
 
     const appDataSlippagePercent = slippagePercentBps / 100
     const quoteSlippagePercent = getAmountBasedSlippage(
         quoteAmounts.afterPartnerFees.buyAmount,
         quoteAmounts.afterSlippage.buyAmount
     )
-    const orderSlippagePercent = getAmountBasedSlippage(orderBuyAfterFees, orderAfterSlippage)
+    const orderSlippagePercent = getAmountBasedSlippage(orderBuyAfterFees, orderBuyAfterSlippage)
 
-    console.log('AAAA', {
-        appDataSlippagePercent,
-        quoteSlippagePercent,
-        orderSlippagePercent
+    console.log('SlippageComparison', {
+        orderSlippagePercent,
+        orderBuyAfterFees,
+        orderAfterSlippage: orderBuyAfterSlippage,
+        getAmountBasedSlippage
     })
     return (
         <div>

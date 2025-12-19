@@ -3,6 +3,8 @@ import { getQuoteAmountsAndCosts, type TokenInfo, type QuoteAmountsAndCosts } fr
 import type { FullOrder } from "../types.ts";
 import { getAppDataParams } from "./getAppDataParams.ts";
 
+const protocolFeeBps = 2
+
 export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken: TokenInfo): QuoteAmountsAndCosts {
     const {partnerFeeBps, slippagePercentBps} = getAppDataParams(order)
 
@@ -12,11 +14,29 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
     const limitPrice= Number(quoteBuyAmount) / Number(quoteSellAmount)
     const quoteFeeInBuyToken = BigInt(Math.ceil(Number(quoteFeeInSellToken) * limitPrice))
 
+    const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
+    const buyAmount = (quoteBuyAmount - quoteFeeInBuyToken)
+
+    console.log('getQuoteAmounts', {
+        data: {
+            order,
+            protocolFeeBps,
+            sellAmount,
+            buyAmount,
+            quoteFeeInSellToken,
+            sellToken,
+            buyToken,
+            slippagePercentBps,
+            partnerFeeBps,
+        },
+        getQuoteAmountsAndCosts
+    })
     return getQuoteAmountsAndCosts({
+        protocolFeeBps,
         orderParams: {
             ...order,
-            sellAmount: (quoteSellAmount - quoteFeeInSellToken).toString(),
-            buyAmount: (quoteBuyAmount - quoteFeeInBuyToken).toString(),
+            sellAmount: sellAmount.toString(),
+            buyAmount: buyAmount.toString(),
             feeAmount: quoteFeeInSellToken.toString()
         },
         sellDecimals: sellToken.decimals,

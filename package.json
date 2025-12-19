@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cowprotocol/cow-sdk": "^6.2.0-RC.1",
+    "@cowprotocol/cow-sdk": "^7.2.5",
+    "@ethersproject/providers": "5.8.0",
+    "@ethersproject/contracts": "5.8.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "zustand": "^5.0.7"
