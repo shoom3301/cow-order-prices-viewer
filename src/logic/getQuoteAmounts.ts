@@ -18,7 +18,8 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
     // const limitPrice= Number(quoteBuyAmount) / Number(quoteSellAmount)
     // const quoteFeeInBuyToken = BigInt(Math.ceil(Number(quoteFeeInSellToken) * limitPrice))
 
-    const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
+    // const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
+    const sellAmount = quoteSellAmount
     const buyAmount = quoteBuyAmount
 
     const params: QuoteAmountsAndCostsParams = {
