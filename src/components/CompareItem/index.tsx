@@ -18,11 +18,11 @@ export function CompareItem({label, orderLabel, quote, order, token, tooltipQuot
 
     return (
         <div className="compare-item">
-            <div>
+            <div className="compare-cell">
                 <span title={tooltipQuote}>{quoteValue !== false && `${label}: `}</span>
                 {quoteValue === false ? '' : <TokenAmount value={quoteValue} opposite={orderValue} token={token}/>}
             </div>
-            <div>
+            <div className="compare-cell">
                 <span title={tooltipOrder}>{orderValue !== false && `${orderLabel ?? label}: `}</span>
                 {orderValue === false ? '' : <TokenAmount value={orderValue} opposite={quoteValue} token={token}/>}
             </div>

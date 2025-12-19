@@ -40,8 +40,8 @@ export function SlippageComparison({order, sellToken, buyToken}: SlippageCompari
         getAmountBasedSlippage
     })
     return (
-        <div>
-            <h3>Slippage comparison:</h3>
+        <section className="slippage-section">
+            <h3>Slippage comparison</h3>
             <div className="slippage-comparison">
                 <div>
                     <label>App-data slippage: </label>
@@ -68,6 +68,6 @@ export function SlippageComparison({order, sellToken, buyToken}: SlippageCompari
                         : null}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

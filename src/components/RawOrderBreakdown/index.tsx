@@ -8,11 +8,11 @@ interface RawOrderBreakdownProps {
 
 export function RawOrderBreakdown({order}: RawOrderBreakdownProps) {
     return (
-        <div>
+        <div className="breakdown-card">
             <h3>Order breakdown (API data)</h3>
             <pre className="order-breakdown">
-            {stringifyWithBigInt(order, 4)}
-        </pre>
+                {stringifyWithBigInt(order, 4)}
+            </pre>
         </div>
     )
 }

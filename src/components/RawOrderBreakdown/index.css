@@ -1,6 +1,27 @@
+.breakdown-card {
+    padding: var(--space-lg);
+    background: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.breakdown-card h3 {
+    margin: 0 0 var(--space-md) 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
 .order-breakdown {
-    background: rgba(220, 220, 220, 0.15);
-    padding: 14px;
-    max-width: 400px;
-    overflow-x: scroll;
+    background: var(--bg-card);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color-light);
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
 }

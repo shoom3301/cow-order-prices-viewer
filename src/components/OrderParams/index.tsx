@@ -11,14 +11,19 @@ export function OrderParams({order}: OrderParamsProps) {
 
     return (
         <div className="params">
-            <div className="param-item">
-                <label>Status: </label><strong>{order.status}</strong>
-            </div>
-            <div className="param-item">
-                <label>Partner fee (app-data): </label><strong>{partnerFeeBps / 100}%</strong>
-            </div>
-            <div className="param-item">
-                <label>Slippage (app-data): </label><strong>{slippagePercentBps / 100}%</strong>
+            <div className="params-grid">
+                <div className="param-item">
+                    <label>Status</label>
+                    <strong>{order.status}</strong>
+                </div>
+                <div className="param-item">
+                    <label>Partner fee (app-data)</label>
+                    <strong>{partnerFeeBps / 100}%</strong>
+                </div>
+                <div className="param-item">
+                    <label>Slippage (app-data)</label>
+                    <strong>{slippagePercentBps / 100}%</strong>
+                </div>
             </div>
         </div>
     )

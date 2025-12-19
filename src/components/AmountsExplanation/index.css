@@ -1,37 +1,39 @@
 .amounts-explanation {
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    background: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
     padding: 0;
-    margin: 20px 0;
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .amounts-explanation-header {
-    padding: 16px 20px;
-    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-    border-bottom: 1px solid #ddd;
-    border-radius: 6px 6px 0 0;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-section-hover);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: var(--space-md);
 }
 
 .amounts-explanation-header h3 {
     margin: 0;
-    font-size: 16px;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-sm);
 }
 
 .order-kind-badge {
     display: inline-block;
-    padding: 3px 10px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: 12px;
     font-size: 11px;
     font-weight: 700;
@@ -53,38 +55,39 @@
 
 .amounts-explanation-controls {
     display: flex;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .control-button {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 6px 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--space-xs) var(--space-md);
     font-size: 12px;
     cursor: pointer;
-    color: #555;
     transition: all 0.2s;
 }
 
 .control-button:hover {
-    background: #f0f0f0;
-    border-color: #999;
+    background: var(--bg-section-hover);
+    border-color: var(--color-info);
 }
 
 .control-button:active {
-    background: #e0e0e0;
+    opacity: 0.8;
 }
 
 .amounts-explanation-sections {
-    padding: 12px;
+    padding: var(--space-md);
+    flex: 1;
+    overflow-y: auto;
 }
 
 .breakdown-section {
-    margin-bottom: 8px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    background: white;
+    margin-bottom: var(--space-sm);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-card);
     overflow: hidden;
 }
 
@@ -95,31 +98,31 @@
 
 .breakdown-section-toggle {
     width: 100%;
-    background: white;
+    background: var(--bg-card);
     border: none;
-    padding: 12px 16px;
+    padding: var(--space-md) var(--space-md);
     text-align: left;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-sm);
     font-size: 13px;
     font-weight: 600;
-    color: #444;
     transition: background-color 0.2s;
+    color: inherit;
 }
 
 .breakdown-section.summary-section .breakdown-section-toggle {
-    background: #f1f8f4;
-    color: #2e7d32;
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-success);
 }
 
 .breakdown-section-toggle:hover {
-    background: #f5f5f5;
+    background: var(--bg-section-hover);
 }
 
 .breakdown-section.summary-section .breakdown-section-toggle:hover {
-    background: #e8f5e9;
+    background: rgba(76, 175, 80, 0.15);
 }
 
 .toggle-icon {
@@ -133,26 +136,27 @@
 }
 
 .breakdown-section-content {
-    padding: 16px;
-    background: #fafafa;
-    border-top: 1px solid #e0e0e0;
+    padding: var(--space-md);
+    background: var(--bg-section);
+    border-top: 1px solid var(--border-color-light);
     font-family: 'Courier New', 'Consolas', monospace;
-    font-size: 12px;
+    color: #000;
+    font-size: 13px;
     line-height: 1.6;
 }
 
 .breakdown-line {
-    margin: 4px 0;
-    padding: 4px 8px;
-    border-radius: 3px;
+    margin: var(--space-xs) 0;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-sm);
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .breakdown-line.indented-line {
-    margin-left: 20px;
-    padding-left: 12px;
-    border-left: 2px solid #e0e0e0;
+    margin-left: var(--space-lg);
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--border-color-light);
 }
 
 .breakdown-line.formula-line {

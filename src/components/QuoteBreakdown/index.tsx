@@ -8,11 +8,11 @@ interface QuoteBreakdownProps {
 
 export function QuoteBreakdown({quoteAmounts}: QuoteBreakdownProps) {
     return (
-        <div>
+        <div className="breakdown-card">
             <h3>Quote amounts breakdown</h3>
             <pre className="quote-breakdown">
-            {stringifyWithBigInt(quoteAmounts, 4)}
-        </pre>
+                {stringifyWithBigInt(quoteAmounts, 4)}
+            </pre>
         </div>
     )
 }

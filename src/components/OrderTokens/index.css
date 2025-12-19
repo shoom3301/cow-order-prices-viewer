@@ -1,25 +1,44 @@
 .tokens {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .token-item {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #dddddd;
-    margin: 10px;
-    max-width: 50%;
+    padding: var(--space-md);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
     overflow: auto;
 }
 
 .token-item label {
+    display: block;
     font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .token-item pre {
     font-size: 12px;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .tokens {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .token-item label {
+        color: rgba(0, 0, 0, 0.7);
+    }
 }

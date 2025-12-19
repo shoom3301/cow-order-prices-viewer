@@ -54,60 +54,51 @@ export function OrderView() {
                 </div>
             )}
             <SlippageComparison order={order} sellToken={sellToken} buyToken={buyToken}/>
-            <div className="container">
-                <div>
-                    <h3>Quote vs Order</h3>
+            <section className="section comparison-section">
+                <h3>Quote vs Order</h3>
 
-                    <div className="order-view-table">
-                        <div>
-                            <div>
-                                <h3>Quote</h3>
-                            </div>
-                            <div>
-                                <h3>Order</h3>
-                            </div>
-                        </div>
-                        <CompareItem label="Sell amount"
-                                     quote={order.quote.sellAmount}
-                                     order={order.sellAmount}
-                                     token={sellToken}/>
-
-                        <CompareItem label="After fees amount"
-                                     quote={quoteAmounts.afterPartnerFees.buyAmount}
-                                     order={orderBuyAfterFees}
-                                     token={buyToken}/>
-
-                        <CompareItem label="Min. receive amount"
-                                     quote={quoteAmounts.afterSlippage.buyAmount}
-                                     order={order.buyAmount}
-                                     token={buyToken}/>
-
-                        <CompareItem label="Expected fee amount"
-                                     orderLabel="Executed fee amount"
-                                     tooltipQuote="gasAmount * gasPrice / sellTokenPrice"
-                                     quote={quoteFeeInSellToken}
-                                     order={order.executedFee || null}
-                                     token={sellToken}/>
-
-                        <CompareItem label="Expected buy amount"
-                                     orderLabel="Executed buy amount"
-                                     quote={order.quote.buyAmount}
-                                     order={order.executedBuyAmount}
-                                     token={sellToken}/>
-
+                <div className="order-view-table">
+                    <div className="order-view-table-header">
+                        <h3>Quote</h3>
                     </div>
+                    <div className="order-view-table-header">
+                        <h3>Order</h3>
+                    </div>
+
+                    <CompareItem label="Sell amount"
+                                 quote={order.quote.sellAmount}
+                                 order={order.sellAmount}
+                                 token={sellToken}/>
+
+                    <CompareItem label="After fees amount"
+                                 quote={quoteAmounts.afterPartnerFees.buyAmount}
+                                 order={orderBuyAfterFees}
+                                 token={buyToken}/>
+
+                    <CompareItem label="Min. receive amount"
+                                 quote={quoteAmounts.afterSlippage.buyAmount}
+                                 order={order.buyAmount}
+                                 token={buyToken}/>
+
+                    <CompareItem label="Expected fee amount"
+                                 orderLabel="Executed fee amount"
+                                 tooltipQuote="gasAmount * gasPrice / sellTokenPrice"
+                                 quote={quoteFeeInSellToken}
+                                 order={order.executedFee || null}
+                                 token={sellToken}/>
+
+                    <CompareItem label="Expected buy amount"
+                                 orderLabel="Executed buy amount"
+                                 quote={order.quote.buyAmount}
+                                 order={order.executedBuyAmount}
+                                 token={sellToken}/>
                 </div>
-            </div>
-            <div className="container">
-                <div>
-                    <RawOrderBreakdown order={order}/>
-                </div>
-                <div>
-                    <QuoteBreakdown quoteAmounts={quoteAmounts}/>
-                </div>
-                <div>
-                    <AmountsExplanation amountsAndCosts={quoteAmountsData.result} params={quoteAmountsData.params}/>
-                </div>
+            </section>
+
+            <div className="breakdowns-grid">
+                <RawOrderBreakdown order={order}/>
+                <QuoteBreakdown quoteAmounts={quoteAmounts}/>
+                <AmountsExplanation amountsAndCosts={quoteAmountsData.result} params={quoteAmountsData.params}/>
             </div>
         </div>
     )

@@ -1,3 +1,30 @@
-.compare-item_different {
-    background: #ffabab;
+/* CompareItem uses display: contents to participate in parent grid */
+.compare-item {
+    display: contents;
+}
+
+/* Style the grid cells */
+.compare-cell {
+    padding: var(--space-md);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+}
+
+.compare-cell > span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: var(--space-xs);
+}
+
+/* Apply different styling when values don't match */
+.compare-cell.compare-item_different {
+    background: rgba(255, 171, 171, 0.15) !important;
+    border-left: 3px solid var(--color-error);
+}
+
+@media (prefers-color-scheme: light) {
+    .compare-cell > span {
+        color: rgba(0, 0, 0, 0.6);
+    }
 }

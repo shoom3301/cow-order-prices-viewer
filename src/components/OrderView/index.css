@@ -1,35 +1,87 @@
-.container {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
+/* Main content wrapper */
 .content {
     text-align: center;
-    margin-top: 20px;
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background: var(--bg-section);
+    border-radius: var(--border-radius-md);
+}
+
+/* Section container - standardized for all sections */
+.section {
+    margin-bottom: var(--section-gap);
+    padding: var(--space-lg);
+    background: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+}
+
+.section h3 {
+    margin: 0 0 var(--space-md) 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Grid container for breakdown sections */
+.breakdowns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--section-gap);
+}
+
+/* Quote vs Order comparison table */
+.comparison-section {
+    margin-bottom: var(--section-gap);
 }
 
 .order-view-table {
-    margin: 20px 0;
-}
-
-.order-view-table > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #f6f6f6;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    margin-top: var(--space-md);
 }
 
-.order-view-table > div > div {
-    border: 1px solid #979fa5;
-    padding: 5px;
+.order-view-table-header {
+    background: var(--bg-section-hover);
+    font-weight: 600;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.order-view-table-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Invalid slippage banner */
 .invalid-slippage-banner {
-    background: #bd6464;
-    border: 1px solid #ff6a6a;
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error);
     color: #fff;
     font-size: 15px;
     font-weight: 600;
-    padding: 10px 14px;
-    border-radius: 4px;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--border-radius-sm);
     text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+/* Responsive grid */
+@media (max-width: 968px) {
+    .breakdowns-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-view-table {
+        grid-template-columns: 1fr;
+    }
 }

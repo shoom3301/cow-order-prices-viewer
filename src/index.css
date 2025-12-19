@@ -11,6 +11,39 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* SPACING SYSTEM - 8px base unit */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* CONTAINER SPACING */
+  --container-padding: 24px;
+  --section-gap: 32px;
+  --content-gap: 16px;
+
+  /* BORDER STYLES */
+  --border-color: #444444;
+  --border-color-light: #555555;
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+
+  /* BACKGROUNDS */
+  --bg-section: rgba(255, 255, 255, 0.03);
+  --bg-section-hover: rgba(255, 255, 255, 0.05);
+  --bg-card: rgba(255, 255, 255, 0.02);
+
+  /* SEMANTIC COLORS */
+  --color-error: #ff6a6a;
+  --color-error-bg: #bd6464;
+  --color-warning: #ff9800;
+  --color-warning-bg: rgb(255, 239, 203);
+  --color-success: #4caf50;
+  --color-info: #646cff;
 }
 
 a {
@@ -32,28 +65,38 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  padding: var(--space-sm) var(--space-lg);
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--bg-card);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
+  color: inherit;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-info);
+  background-color: var(--bg-section-hover);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid var(--color-info);
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+
+    /* Light mode overrides */
+    --border-color: #d1d1d1;
+    --border-color-light: #e0e0e0;
+    --bg-section: rgba(0, 0, 0, 0.03);
+    --bg-section-hover: rgba(0, 0, 0, 0.05);
+    --bg-card: rgba(0, 0, 0, 0.02);
   }
   a:hover {
     color: #747bff;
