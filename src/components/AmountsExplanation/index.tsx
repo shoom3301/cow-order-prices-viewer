@@ -39,7 +39,7 @@ export function AmountsExplanation({params, amountsAndCosts}: AmountsExplanation
     return (
         <div className="amounts-explanation">
             <div className="amounts-explanation-header">
-                <h3>Quote Amounts Breakdown <strong>[AI GENERATED]</strong> <span className={`order-kind-badge ${orderKind.toLowerCase()}`}>{orderKind}</span></h3>
+                <h3>Details <strong>[AI GENERATED]</strong> <span className={`order-kind-badge ${orderKind.toLowerCase()}`}>{orderKind}</span></h3>
                 <div className="amounts-explanation-controls">
                     <button onClick={expandAll} className="control-button">Expand All</button>
                     <button onClick={collapseAll} className="control-button">Collapse All</button>
