@@ -9,6 +9,7 @@ import { OrderParams } from "../OrderParams";
 import { QuoteBreakdown } from "../QuoteBreakdown";
 import { OrderTokens } from "../OrderTokens";
 import { SlippageComparison } from "../SlippageComparison";
+import { RawOrderBreakdown } from "../RawOrderBreakdown";
 
 export function OrderView() {
     const {chainId, order} = useOrderContextStore()
@@ -53,9 +54,6 @@ export function OrderView() {
             <SlippageComparison order={order} sellToken={sellToken} buyToken={buyToken}/>
             <div className="container">
                 <div>
-                    <QuoteBreakdown quoteAmounts={quoteAmounts}/>
-                </div>
-                <div>
                     <h3>Quote vs Order</h3>
 
                     <div className="order-view-table">
@@ -96,6 +94,14 @@ export function OrderView() {
                                      token={sellToken}/>
 
                     </div>
+                </div>
+            </div>
+            <div className="container">
+                <div>
+                    <RawOrderBreakdown order={order}/>
+                </div>
+                <div>
+                    <QuoteBreakdown quoteAmounts={quoteAmounts}/>
                 </div>
             </div>
         </div>
