@@ -17,7 +17,22 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
     const sellAmount = (quoteSellAmount - quoteFeeInSellToken)
     const buyAmount = (quoteBuyAmount - quoteFeeInBuyToken)
 
+    const result = getQuoteAmountsAndCosts({
+        protocolFeeBps,
+        orderParams: {
+            ...order,
+            sellAmount: sellAmount.toString(),
+            buyAmount: buyAmount.toString(),
+            feeAmount: quoteFeeInSellToken.toString()
+        },
+        sellDecimals: sellToken.decimals,
+        buyDecimals: buyToken.decimals,
+        slippagePercentBps,
+        partnerFeeBps
+    })
+
     console.log('getQuoteAmounts', {
+        result,
         data: {
             order,
             protocolFeeBps,
@@ -31,17 +46,6 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
         },
         getQuoteAmountsAndCosts
     })
-    return getQuoteAmountsAndCosts({
-        protocolFeeBps,
-        orderParams: {
-            ...order,
-            sellAmount: sellAmount.toString(),
-            buyAmount: buyAmount.toString(),
-            feeAmount: quoteFeeInSellToken.toString()
-        },
-        sellDecimals: sellToken.decimals,
-        buyDecimals: buyToken.decimals,
-        slippagePercentBps,
-        partnerFeeBps
-    })
+
+    return result
 }

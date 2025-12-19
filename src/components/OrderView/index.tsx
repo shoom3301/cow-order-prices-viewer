@@ -4,7 +4,7 @@ import { CompareItem } from "../CompareItem";
 import { useErc20Token } from "../../hooks/useErc20Token.ts";
 import { getFeeFromQuote } from "../../logic/getFeeFromQuote.ts";
 import { getQuoteAmounts } from "../../logic/getQuoteAmounts.ts";
-import { getOrderBuyAmountAfterFees } from "../../logic/getOrderBuyAmountAfterFees.ts";
+import { getOrderBuyAmountAfterFees } from "../../logic/getOrderAmountAfterFees.ts";
 import { OrderParams } from "../OrderParams";
 import { QuoteBreakdown } from "../QuoteBreakdown";
 import { OrderTokens } from "../OrderTokens";
