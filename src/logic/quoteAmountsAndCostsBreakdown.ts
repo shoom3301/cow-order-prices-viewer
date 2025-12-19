@@ -38,11 +38,6 @@ export function quoteAmountsAndCostsBreakdown(
   const lines: string[] = []
   const add = (line: string) => lines.push(line)
 
-  add('='.repeat(80))
-  add('QUOTE AMOUNTS AND COSTS BREAKDOWN')
-  add('='.repeat(80))
-  add('')
-
   // Input parameters
   add('INPUT PARAMETERS:')
   add('-'.repeat(80))

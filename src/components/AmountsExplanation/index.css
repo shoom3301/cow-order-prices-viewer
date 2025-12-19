@@ -1,6 +1,183 @@
 .amounts-explanation {
-    background: rgba(220, 220, 220, 0.15);
-    padding: 14px;
-    max-width: 400px;
-    overflow-x: scroll;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0;
+    margin: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.amounts-explanation-header {
+    padding: 16px 20px;
+    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+    border-bottom: 1px solid #ddd;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.amounts-explanation-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-kind-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.order-kind-badge.sell {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #90caf9;
+}
+
+.order-kind-badge.buy {
+    background: #f3e5f5;
+    color: #7b1fa2;
+    border: 1px solid #ce93d8;
+}
+
+.amounts-explanation-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-button {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.control-button:hover {
+    background: #f0f0f0;
+    border-color: #999;
+}
+
+.control-button:active {
+    background: #e0e0e0;
+}
+
+.amounts-explanation-sections {
+    padding: 12px;
+}
+
+.breakdown-section {
+    margin-bottom: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: white;
+    overflow: hidden;
+}
+
+.breakdown-section.summary-section {
+    border: 2px solid #4caf50;
+    background: #f1f8f4;
+}
+
+.breakdown-section-toggle {
+    width: 100%;
+    background: white;
+    border: none;
+    padding: 12px 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    transition: background-color 0.2s;
+}
+
+.breakdown-section.summary-section .breakdown-section-toggle {
+    background: #f1f8f4;
+    color: #2e7d32;
+}
+
+.breakdown-section-toggle:hover {
+    background: #f5f5f5;
+}
+
+.breakdown-section.summary-section .breakdown-section-toggle:hover {
+    background: #e8f5e9;
+}
+
+.toggle-icon {
+    color: #666;
+    font-size: 11px;
+    min-width: 12px;
+}
+
+.section-title {
+    flex: 1;
+}
+
+.breakdown-section-content {
+    padding: 16px;
+    background: #fafafa;
+    border-top: 1px solid #e0e0e0;
+    font-family: 'Courier New', 'Consolas', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.breakdown-line {
+    margin: 4px 0;
+    padding: 4px 8px;
+    border-radius: 3px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.breakdown-line.indented-line {
+    margin-left: 20px;
+    padding-left: 12px;
+    border-left: 2px solid #e0e0e0;
+}
+
+.breakdown-line.formula-line {
+    background: #fff3e0;
+    border-left: 3px solid #ff9800;
+    padding-left: 10px;
+    font-weight: 600;
+    color: #e65100;
+}
+
+.breakdown-line.result-line {
+    background: #e8f5e9;
+    border-left: 3px solid #4caf50;
+    padding-left: 10px;
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+.breakdown-line.calculation-line {
+    background: #f3e5f5;
+    color: #4a148c;
+}
+
+.breakdown-line.comment-line {
+    color: #666;
+    font-style: italic;
+    background: #f5f5f5;
 }
