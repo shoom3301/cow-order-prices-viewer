@@ -91,7 +91,7 @@ export function OrderView() {
                                  orderLabel="Executed buy amount"
                                  quote={order.quote.buyAmount}
                                  order={order.executedBuyAmount}
-                                 token={sellToken}/>
+                                 token={buyToken}/>
                 </div>
             </section>
 
