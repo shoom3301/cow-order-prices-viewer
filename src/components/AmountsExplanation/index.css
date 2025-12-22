@@ -140,7 +140,6 @@
     background: var(--bg-section);
     border-top: 1px solid var(--border-color-light);
     font-family: 'Courier New', 'Consolas', monospace;
-    color: #000;
     font-size: 13px;
     line-height: 1.6;
 }

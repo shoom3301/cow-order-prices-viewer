@@ -24,6 +24,7 @@
 
 .slippage-comparison > div {
     background: var(--bg-card);
+    color: #000000;
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
@@ -33,13 +34,11 @@
 .slippage-comparison > div > label {
     display: block;
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.7);
     line-height: 1.4;
 }
 
 .slippage-comparison > div > strong {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.95);
 }
 
 .slippage_invalid {

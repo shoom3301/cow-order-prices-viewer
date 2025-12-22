@@ -7,7 +7,7 @@ import { getQuoteAmounts } from "../../logic/getQuoteAmounts.ts";
 import type { TokenInfo } from "@cowprotocol/cow-sdk";
 import { OrderKind } from "@cowprotocol/sdk-order-book";
 
-const SLIPAGE_PRECISION = 12
+const SLIPAGE_PRECISION = 6
 
 interface SlippageComparisonProps {
     order: FullOrder
