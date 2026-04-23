@@ -30,8 +30,6 @@ export function getQuoteAmounts(order: FullOrder, sellToken: TokenInfo, buyToken
             buyAmount: buyAmount.toString(),
             feeAmount: quoteFeeInSellToken.toString()
         },
-        sellDecimals: sellToken.decimals,
-        buyDecimals: buyToken.decimals,
         slippagePercentBps,
         partnerFeeBps
     }
