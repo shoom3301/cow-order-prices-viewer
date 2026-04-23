@@ -9,8 +9,8 @@ const abi = [
     "function balanceOf(address account) view returns (uint256)"
 ];
 
-export function fetchErc20Token(chainId: SupportedChainId, address: string): Promise<TokenInfo> {
-    const provider = getRpcProvider(chainId)
+export function fetchErc20Token(chainId: SupportedChainId, address: string, rpcUrl?: string): Promise<TokenInfo> {
+    const provider = getRpcProvider(chainId, rpcUrl)
     const tokenContract = new Contract(address, abi, provider);
 
     return Promise.all([

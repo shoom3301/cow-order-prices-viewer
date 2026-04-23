@@ -22,6 +22,32 @@
     font-size: 1.5rem;
 }
 
+.header-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-end;
+}
+
+.rpc-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+}
+
+.rpc-label {
+    font-size: 14px;
+    padding-top: 9px;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.rpc-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
 .network-selector {
     font-size: 16px;
     padding: var(--space-sm) var(--space-md);
@@ -36,6 +62,40 @@
     border-color: var(--color-info);
 }
 
+.rpc-custom-input {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.rpc-url-input {
+    font-size: 14px;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-card);
+    color: inherit;
+    min-width: 220px;
+}
+
+.rpc-url-input:focus {
+    outline: none;
+    border-color: var(--color-info);
+}
+
+.rpc-apply-btn {
+    font-size: 14px;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-info);
+    border-radius: var(--border-radius-sm);
+    background: var(--color-info);
+    color: white;
+    cursor: pointer;
+}
+
+.rpc-apply-btn:hover {
+    opacity: 0.85;
+}
+
 @media (max-width: 768px) {
     .app-header {
         flex-direction: column;
@@ -44,5 +104,18 @@
 
     .app-header h2 {
         order: -1;
+    }
+
+    .header-right {
+        align-items: center;
+    }
+
+    .rpc-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rpc-label {
+        padding-top: 0;
     }
 }
