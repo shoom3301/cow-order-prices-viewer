@@ -1,4 +1,4 @@
-import { getBigNumber, type QuoteAmountsAndCosts, type QuoteAmountsAndCostsParams } from "@cowprotocol/cow-sdk";
+import { type QuoteAmountsAndCosts, type QuoteAmountsAndCostsParams, type TokenInfo } from "@cowprotocol/cow-sdk";
 import { OrderKind } from "@cowprotocol/sdk-order-book";
 
 
@@ -29,14 +29,18 @@ const ONE_HUNDRED_BPS = BigInt(100 * 100)
 export function quoteAmountsAndCostsBreakdown(
   params: QuoteAmountsAndCostsParams,
   amountsAndCosts: QuoteAmountsAndCosts,
+  sellToken: TokenInfo,
+  buyToken: TokenInfo
 ): string {
-  const { orderParams, sellDecimals, buyDecimals, slippagePercentBps } = params
+  const { orderParams, slippagePercentBps } = params
   const partnerFeeBps = params.partnerFeeBps ?? 0
   const protocolFeeBps = params.protocolFeeBps ?? 0
   const isSell = orderParams.kind === OrderKind.SELL
 
   const lines: string[] = []
   const add = (line: string) => lines.push(line)
+  const sellDecimals = sellToken.decimals
+  const buyDecimals = buyToken.decimals
 
   // Input parameters
   add('INPUT PARAMETERS:')
@@ -332,4 +336,24 @@ export function quoteAmountsAndCostsBreakdown(
   add('='.repeat(80))
 
   return lines.join('\n')
+}
+
+type BigNumber = {
+  big: bigint
+  num: number
+}
+
+function getBigNumber(value: string | bigint | number, decimals: number): BigNumber {
+  if (typeof value === 'number') {
+    const bigAsNumber = value * 10 ** decimals
+    const bigAsNumberString = bigAsNumber.toFixed()
+    const big = BigInt(bigAsNumberString.includes('e') ? bigAsNumber : bigAsNumberString)
+
+    return { big, num: value }
+  }
+
+  const big = BigInt(value)
+  const num = Number(big) / 10 ** decimals
+
+  return { big, num }
 }

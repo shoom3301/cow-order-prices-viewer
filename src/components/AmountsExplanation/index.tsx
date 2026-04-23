@@ -1,11 +1,13 @@
 import "./index.css";
-import type { QuoteAmountsAndCosts, QuoteAmountsAndCostsParams } from "@cowprotocol/cow-sdk";
+import type { QuoteAmountsAndCosts, QuoteAmountsAndCostsParams, TokenInfo } from "@cowprotocol/cow-sdk";
 import { quoteAmountsAndCostsBreakdown } from "../../logic/quoteAmountsAndCostsBreakdown.ts";
 import { useState } from "react";
 
 interface AmountsExplanationProps {
     params: QuoteAmountsAndCostsParams
     amountsAndCosts: QuoteAmountsAndCosts
+    sellToken: TokenInfo
+    buyToken: TokenInfo
 }
 
 interface BreakdownSection {
@@ -13,9 +15,9 @@ interface BreakdownSection {
     lines: string[]
 }
 
-export function AmountsExplanation({params, amountsAndCosts}: AmountsExplanationProps) {
+export function AmountsExplanation({params, amountsAndCosts, sellToken, buyToken}: AmountsExplanationProps) {
     const [expandedSections, setExpandedSections] = useState<Set<number>>(new Set([0])) // First section expanded by default
-    const breakdownText = quoteAmountsAndCostsBreakdown(params, amountsAndCosts)
+    const breakdownText = quoteAmountsAndCostsBreakdown(params, amountsAndCosts, sellToken, buyToken)
     const { orderKind, sections } = parseBreakdown(breakdownText)
 
     const toggleSection = (index: number) => {

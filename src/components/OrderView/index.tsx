@@ -98,7 +98,7 @@ export function OrderView() {
             <div className="breakdowns-grid">
                 <RawOrderBreakdown order={order}/>
                 <QuoteBreakdown quoteAmounts={quoteAmounts}/>
-                <AmountsExplanation amountsAndCosts={quoteAmountsData.result} params={quoteAmountsData.params}/>
+                <AmountsExplanation amountsAndCosts={quoteAmountsData.result} params={quoteAmountsData.params} sellToken={sellToken} buyToken={buyToken}/>
             </div>
         </div>
     )
